@@ -1,4 +1,10 @@
 @echo off
+
+REM Setup VS environment
+call "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath > vs_path.txt
+set /p VS_PATH=<vs_path.txt
+call "%VS_PATH%\VC\Auxiliary\Build\vcvarsall.bat" x64
+
 REM Forward all arguments to cmake commands
 
 REM Configure build directory
